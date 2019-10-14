@@ -4,6 +4,7 @@
 // Imports
 const Koa = require('koa')
 const Router = require('koa-router')
+const Logger = require('koa-logger')
 
 const app = new Koa()
 const router = new Router()
@@ -19,5 +20,6 @@ router.get('/parrot', async ctx => {
     ctx.body = ctx.query.sentence
 })
 
-app.use(router.routes())
+app.use(Logger())
+    .use(router.routes())
     .listen(3000)
